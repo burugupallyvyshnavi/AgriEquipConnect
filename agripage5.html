@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .support-form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], textarea, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .confirmation {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            border-radius: 5px;
+            color: #3c763d;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Customer Support</h1>
+
+    <form class="support-form" id="supportForm">
+        <label for="machinery">Select Machinery:</label>
+        <select id="machinery" name="machinery">
+            <option value="Tractor">Tractor</option>
+            <option value="Combine Harvester">Combine Harvester</option>
+            <option value="Plow">Plow</option>
+            <option value="Seeder">Seeder</option>
+            <option value="Sprayer">Sprayer</option>
+        </select>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="issue">Describe Your Issue:</label>
+        <textarea id="issue" name="issue" rows="4" required></textarea>
+
+        <input type="submit" value="Submit Support Request">
+    </form>
+
+    <div id="confirmation" class="confirmation" style="display:none;">
+        <h2>Support Request Submitted</h2>
+        <p id="confirmationMessage"></p>
+    </div>
+
+    <script>
+        document.getElementById('supportForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const machinery = document.getElementById('machinery').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const issue = document.getElementById('issue').value;
+
+            // Display confirmation message
+            const confirmationMessage = `Thank you, ${name}! Your support request for the ${machinery} has been submitted. We will contact you at ${email} shortly.`;
+            document.getElementById('confirmationMessage').textContent = confirmationMessage;
+            document.getElementById('confirmation').style.display = 'block';
+
+            // Clear form
+            document.getElementById('supportForm').reset();
+        });
+    </script>
+
+</body>
+</html>

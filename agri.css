@@ -1,0 +1,139 @@
+/* Basic styling */
+
+header {
+    background: #333;
+    color: #bbb7b7;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5em;
+    margin-left: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin-right: 20px;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.hero {
+    background-image: url("Downloads/agr imag.jpg");
+    color: #0e0e0e;
+    height: 500px;
+    background-size: 150% 130%;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #ff7f50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.features, .process, .contact {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.features h2, .process h2, .contact h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.feature {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-steps .step {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.step-number {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact p {
+    font-size: 1.2em;
+}
+
+footer {
+    background: #333;
+    color: #171414;
+    text-align: center;
+    padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-steps {
+        flex-direction: column;
+    }
+
+    .process-steps .step {
+        margin-bottom: 20px;
+    }
+
+    .process-steps .step:last-child {
+        margin-bottom: 0;
+    }
+}

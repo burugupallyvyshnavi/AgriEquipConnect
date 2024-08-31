@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machinery Reviews</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .review-form {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], textarea, input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .reviews {
+            margin-top: 30px;
+        }
+        .review {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .review h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .review p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Agricultural Machinery Reviews</h1>
+
+    <form class="review-form" id="reviewForm">
+        <label for="machinery">Select Machinery:</label>
+        <select id="machinery" name="machinery">
+            <option value="Tractor">Tractor</option>
+            <option value="Combine Harvester">Combine Harvester</option>
+            <option value="Plow">Plow</option>
+            <option value="Seeder">Seeder</option>
+            <option value="Sprayer">Sprayer</option>
+        </select>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="review">Your Review:</label>
+        <textarea id="review" name="review" rows="4" required></textarea>
+
+        <input type="submit" value="Submit Review">
+    </form>
+
+    <div class="reviews" id="reviewsList">
+        <h2>Submitted Reviews</h2>
+        <!-- Reviews will appear here -->
+    </div>
+
+    <script>
+        const reviews = [];
+
+        document.getElementById('reviewForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const machinery = document.getElementById('machinery').value;
+            const name = document.getElementById('name').value;
+            const review = document.getElementById('review').value;
+
+            // Add review to the array
+            reviews.push({ machinery, name, review });
+
+            // Display reviews
+            displayReviews();
+
+            // Clear form
+            document.getElementById('reviewForm').reset();
+        });
+
+        function displayReviews() {
+            const reviewsList = document.getElementById('reviewsList');
+            reviewsList.innerHTML = '<h2>Submitted Reviews</h2>'; // Clear the reviews list
+
+            reviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('review');
+                
+                reviewDiv.innerHTML = `
+                    <h3>${review.machinery}</h3>
+                    <p><strong>${review.name}</strong></p>
+                    <p>${review.review}</p>
+                `;
+                
+                reviewsList.appendChild(reviewDiv);
+            });
+        }
+    </script>
+    <marquee width="100%" direction="right" height="100px" color: red;>
+        
+        <h1>Coromandel International Limited....</h1>
+        
+        </marquee>
+
+</body>
+</html>

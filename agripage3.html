@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machinery Booking System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .booking-form {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 50%;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select, input[type="text"], input[type="email"], input[type="datetime-local"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .search-bar {
+            width: 50%;
+            padding: 10px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: block;
+        }
+        #bookingConfirmation {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Book Agricultural Machinery</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" class="search-bar" onkeyup="filterMachinery()" placeholder="Search for machinery..">
+
+    <form class="booking-form" id="bookingForm">
+        <label for="machinery">Select Machinery:</label>
+        <select id="machinery" name="machinery">
+            <option value="Tractor">Tractor</option>
+            <option value="Combine Harvester">Combine Harvester</option>
+            <option value="Plow">Plow</option>
+            <option value="Seeder">Seeder</option>
+            <option value="Sprayer">Sprayer</option>
+        </select>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="startDatetime">Booking Start DateTime:</label>
+        <input type="datetime-local" id="startDatetime" name="startDatetime" required>
+
+        <label for="endDatetime">Booking End DateTime:</label>
+        <input type="datetime-local" id="endDatetime" name="endDatetime" required>
+
+        <label for="duration">Booking Duration:</label>
+        <select id="duration" name="duration">
+            <option value="1 hour">1 hour</option>
+            <option value="2 hours">2 hours</option>
+            <option value="Half day">Half day</option>
+            <option value="Full day">Full day</option>
+            <option value="Custom">Custom</option>
+        </select>
+
+        <input type="submit" value="Book Now">
+    </form>
+
+    <div id="bookingConfirmation" style="display:none;">
+        <h2>Booking Confirmation</h2>
+        <p id="confirmationMessage"></p>
+    </div>
+
+    <script>
+        // Filter Machinery Options
+        function filterMachinery() {
+            const searchInput = document.getElementById('searchBar').value.toUpperCase();
+            const select = document.getElementById('machinery');
+            const options = select.getElementsByTagName('option');
+            
+            for (let i = 0; i < options.length; i++) {
+                const optionText = options[i].textContent || options[i].innerText;
+                if (optionText.toUpperCase().indexOf(searchInput) > -1) {
+                    options[i].style.display = "";
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+        }
+
+        // Handle Form Submission
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const machinery = document.getElementById('machinery').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const startDatetime = document.getElementById('startDatetime').value;
+            const endDatetime = document.getElementById('endDatetime').value;
+            const duration = document.getElementById('duration').value;
+
+            // Display confirmation message
+            const confirmationMessage = `Thank you, ${name}! Your booking for ${machinery} from ${startDatetime} to ${endDatetime} for ${duration} has been confirmed. A confirmation email will be sent to ${email}.`;
+            document.getElementById('confirmationMessage').textContent = confirmationMessage;
+            document.getElementById('bookingConfirmation').style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

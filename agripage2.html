@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >Agricultural Machinery Availability</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        .machine {
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .available {
+            border-left: 5px solid green;
+            color: green;
+        }
+        .unavailable {
+            border-left: 5px solid red;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Agricultural Machinery Availability</h1>
+
+    <div id="machinery-list">
+        <!-- Machinery items will be displayed here -->
+    </div>
+
+    <script>
+        // Example machinery data
+        const machineryData = [
+            { name: 'Tractor', available: true },
+            { name: 'Combine Harvester', available: false },
+            { name: 'Plow', available: true },
+            { name: 'Seeder', available: false },
+            { name: 'Sprayer', available: true }
+        ];
+
+        // Function to display machinery availability
+        function displayMachinery() {
+            const machineryList = document.getElementById('machinery-list');
+
+            machineryData.forEach(machine => {
+                const machineDiv = document.createElement('div');
+                machineDiv.classList.add('machine');
+                machineDiv.classList.add(machine.available ? 'available' : 'unavailable');
+                machineDiv.textContent = `${machine.name} - ${machine.available ? 'Available' : 'Unavailable'}`;
+                machineryList.appendChild(machineDiv);
+            });
+        }
+
+        // Call the function to display the data when the page loads
+        displayMachinery();
+    </script>
+
+</body>
+</html>
